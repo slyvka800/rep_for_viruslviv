@@ -1,11 +1,3 @@
-//
-//  main.cpp
-//  Lab 5
-//
-//  Created by Павло Сливка on 15.11.20.
-//  Copyright © 2020 Павло Сливка. All rights reserved.
-//
-
 #include <iostream>
 #include "Header.h"
 #include <string>
@@ -14,21 +6,21 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    Home home;
+    Home Home;
     
-    Pet Stepan("Stepan", "Dog", 3, "Hello", 8, DOG);
-    home.addAnimal(Stepan);
-    Pet Barbos("Barbos", "Dog", 4, "Hi", 4, DOG);
-    home.addAnimal(Barbos);
-    Pet Garfild("Garfild", "Cat", 10, "Guten Tag", 6, CAT);
-    home.addAnimal(Garfild);
-    Pet Jackson("Jackson", "Dragon", 1, "Hello", 78, DRAGON);
-    home.addAnimal(Jackson);
-    Pet Ratatuj("Ratatuj", "Mouse", 2, "Hello", 2, MOUSE);
-    home.addAnimal(Ratatuj);
+    Pet stepan("Stepan", "Dog", 3, "Hello", 8, DOG);
+    Home.addAnimal(stepan);
+    Pet barbos("Barbos", "Dog", 4, "Hi", 4, DOG);
+    Home.addAnimal(barbos);
+    Pet garfild("Garfild", "Cat", 10, "Guten Tag", 6, CAT);
+    Home.addAnimal(garfild);
+    Pet jackson("Jackson", "Dragon", 1, "Hello", 78, DRAGON);
+    Home.addAnimal(jackson);
+    Pet ratatuj("Ratatuj", "Mouse", 2, "Hello", 2, MOUSE);
+    Home.addAnimal(ratatuj);
     
-    vector<Pet> animals = home.getAnimal();
-    sort(animals, 0, length-1);
+    vector<Pet> animals = Home.getAnimal();
+    sortByAge(animals, 0, length-1);
     for(int i=0; i<length; i++)
     {
         cout << animals[i].getName()<< " ";
