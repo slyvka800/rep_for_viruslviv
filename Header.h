@@ -1,8 +1,8 @@
-
+#pragma once
 #include <string>
 #include <vector>
 using namespace std;
-enum kind{
+enum Kind{
     DOG,
     CAT,
     BIRD,
@@ -15,18 +15,17 @@ enum kind{
 class Pet
 {
 private:
-    
     string name;
     string breed;
     int age;
     string greeting;
     int mass;
-    kind Kind;
+    Kind kind;
 
 public:
     Pet();
     ~Pet();
-    Pet(string, string, int, string, int, kind);
+    Pet(string, string, int, string, int, Kind);
     
     friend bool isPolite(Pet*);
     string getName();
@@ -40,13 +39,12 @@ class Home
 {
 private:
     int count = 0;
-    vector<Pet> animal;
+    vector<Pet> pets;
 public:
     Home();
     ~Home();
     void addAnimal(Pet);
     vector<Pet> getAnimal();
-    
 };
 
 void sort(vector <Pet> &, int, int);
