@@ -2,16 +2,17 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#define years_difference 2
 using namespace std;
 
-Pet::Pet(string name, string breed, int age, string greeting, int mass, kind Kind)
+Pet::Pet(string name, string breed, int age, string greeting, int mass, Kind kind)
 {
     this->name = name;
     this->breed = breed;
     this->age = age;
     this->greeting = greeting;
     this->mass = mass;
-    this->Kind = Kind;
+    this->kind = kind;
 }
 
 Pet::~Pet(){};
@@ -39,31 +40,34 @@ string Pet::getGreeting()
 {
     return greeting;
 }
+
 int Pet::getAge()
 {
     return age;
 }
+
 int Pet::getMass()
 {
     return mass;
 }
+
 string Pet::getBreed()
 {
     return breed;
 }
 
-bool isPolite(Pet* a)
+bool isPolite(Pet* pet)
 {
-    Pet b = *a;
-    if(b.getGreeting() == "Hello") return 1;
-    else return 0;
+    if(pet -> getGreeting() == "Hello")
+        return 1;
+    return 0;
 }
 
-void areFriends(vector <Pet> &animal, int l)
+void areFriends(vector <Pet> &animal, int animal_count)
 {
-    for(int i=0; i<(l-1); i++)
+    for(int i=0; i<(animal_count-1); i++)
     {
-        if( abs( animal[i+1].getAge()-animal[i].getAge() ) < 2 )
+        if( abs( animal[i+1].getAge()-animal[i].getAge() ) < years_difference )
         {
             cout << endl;
             cout << animal[i+1].getName() << " and " << animal[i].getName() << " are friends";
@@ -72,38 +76,37 @@ void areFriends(vector <Pet> &animal, int l)
     }
 }
 
-//sort
-void swap(Pet &a, Pet &b)
+void swapPets(Pet &first, Pet &second)
 {
-    Pet v = a;
-    a = b;
-    b = v;
+    Pet temp = first;
+    first = second;
+    second = temp;
 }
 
-int partition(vector<Pet> &a,int low,int high)
+int partition(vector<Pet> &pet,int first_position,int second_position)
 {
-    int pivot = a[high].getAge();
-    int i = low-1;
+    int pivot = pet[second_position].getAge();
+    int i = first_position-1;
     
-    for(int j=low; j<high; j++)
+    for(int j=first_position; j<second_position; j++)
     {
-        if(a[j].getAge() < pivot)
+        if(pet[j].getAge() < pivot)
         {
             i++;
-            swap(a[i], a[j]);
+            swapPets(pet[i], pet[j]);
         }
     }
-    swap(a[++i], a[high]);
+    swapPets(pet[++i], pet[second_position]);
     return i;
 }
 
-void sort(vector<Pet> &a, int low, int high)
+void sortByAge(vector<Pet> &pet, int first_position, int second_position)
 {
-    if(low < high)
+    if(first_position < second_position)
     {
-        int pi = partition(a, low, high);
-        sort(a, low, pi-1);
-        sort(a, pi+1, high);
+        int pi = partition(pet, first_position, second_position);
+        sortByAge(pet, first_position, pi-1);
+        sortByAge(pet, pi+1, second_position);
         
     }
 }
