@@ -22,13 +22,13 @@ Home::~Home(){};
 
 void Home::addAnimal(Pet newAnimal)
 {
-    animal.push_back(newAnimal);
+    pets.push_back(newAnimal);
     this->count++;
 }
 
 vector<Pet> Home::getAnimal()
 {
-    return animal;
+    return pets;
 }
 
 string Pet::getName()
@@ -110,3 +110,4 @@ void sortByAge(vector<Pet> &pet, int first_position, int second_position)
         
     }
 }
+
