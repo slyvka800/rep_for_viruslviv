@@ -40,10 +40,9 @@ int main(int argc, const char * argv[]) {
         if(animals[i].getName() == name_polite)
         {
             if(isPolite(&animals[i])) cout << "Is polite";
-                else cout << "Isn`t polite";
+            else cout << "Isn`t polite";
         }
     cout << endl;
     
     return 0;
 }
-
