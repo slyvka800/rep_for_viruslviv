@@ -21,7 +21,7 @@ private:
     string greeting;
     int mass;
     Kind kind;
-
+    
 public:
     Pet();
     ~Pet();
@@ -47,5 +47,5 @@ public:
     vector<Pet> getAnimal();
 };
 
-void sort(vector <Pet> &, int, int);
+void sortByAge(vector <Pet> &, int, int);
 void areFriends(vector <Pet>&, int);
